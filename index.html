@@ -3,149 +3,315 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Memories Forever</title>
+<title>Memories Forever - Class of 2026</title>
+
+<!-- Menggunakan Font Google Poppins yang Lebih Elegan -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+/* --- RESET & BASE STYLES --- */
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
 }
 
-body{
-    background:#f5f7ff;
-    color:#333;
+body {
+    background: #fbfbfe;
+    color: #2d3748;
+    overflow-x: hidden;
 }
 
-.hero{
-    height:100vh;
-    background:linear-gradient(135deg,#667eea,#764ba2);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    color:white;
-    padding:20px;
+/* --- HERO SECTION --- */
+.hero {
+    position: relative;
+    height: 100vh;
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #c084fc 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 24px;
+    overflow: hidden;
 }
 
-.hero-content h1{
-    font-size:3rem;
-    margin-bottom:15px;
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    top: -100px;
+    right: -100px;
 }
 
-.hero-content p{
-    font-size:1.2rem;
+.hero-content {
+    max-width: 800px;
+    z-index: 2;
+    animation: fadeInUp 1.2s ease-out;
 }
 
-.section{
-    padding:70px 20px;
-    max-width:1200px;
-    margin:auto;
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.section h2{
-    text-align:center;
-    margin-bottom:30px;
-    color:#4f46e5;
+.hero-content p {
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1.8;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
 }
 
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+.scroll-btn {
+    display: inline-block;
+    padding: 12px 32px;
+    background: white;
+    color: #4f46e5;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    animation: bounce 2s infinite;
 }
 
-.gallery img{
-    width:100%;
-    height:300px;
-    object-fit:cover;
-    border-radius:15px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.15);
-    transition:0.3s;
+.scroll-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.15);
 }
 
-.gallery img:hover{
-    transform:scale(1.03);
+/* --- MAIN SECTION STYLES --- */
+.section {
+    padding: 100px 24px;
+    max-width: 1100px;
+    margin: auto;
 }
 
-.card{
-    background:white;
-    padding:20px;
-    margin-bottom:20px;
-    border-radius:15px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
 }
 
-.card h4{
-    margin-top:10px;
-    color:#4f46e5;
+.section-title h2 {
+    font-size: 2.25rem;
+    color: #1a1a24;
+    font-weight: 700;
+    margin-bottom: 10px;
 }
 
-.footer{
-    background:#4f46e5;
-    color:white;
-    text-align:center;
-    padding:50px 20px;
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(to right, #4f46e5, #7c3aed);
+    margin: 15px auto 0 auto;
+    border-radius: 2px;
+}
+
+/* --- PREMIUM GALLERY GRID (VERSI PORTRAIT RAPI) --- */
+.gallery {
+    display: grid;
+    /* Lebar kolom diatur pas untuk ukuran foto HP vertical */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background: #e2e8f0;
+    /* Mengunci rasio foto 9:16 agar tegak lurus sempurna tanpa terpotong */
+    aspect-ratio: 9 / 16; 
+    width: 100%;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transition: transform 0.6s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(79, 70, 229, 0.2);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* --- ELEGANT WISHES CARDS --- */
+.wishes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card::before {
+    content: "“";
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    font-size: 5rem;
+    color: #e0e7ff;
+    font-family: serif;
+    line-height: 1;
+    z-index: 1;
+}
+
+.card p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #4a5568;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.card h4 {
+    font-size: 1.1rem;
+    color: #4f46e5;
+    font-weight: 600;
+    text-align: right;
+}
+
+/* --- FOOTER --- */
+.footer {
+    background: #0f111a;
+    color: white;
+    text-align: center;
+    padding: 80px 24px;
+    position: relative;
+}
+
+.footer h2 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.footer p {
+    font-size: 1rem;
+    color: #a0aec0;
+    font-weight: 300;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* Responsive Tampilan Layar HP */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2.5rem; }
+    .hero-content p { font-size: 1.1rem; }
+    .section { padding: 60px 20px; }
 }
 </style>
 </head>
 
 <body>
 
+<!-- Bagian Utama Atas -->
 <section class="hero">
     <div class="hero-content">
         <h1>✨ Memories Forever ✨</h1>
         <p>
-            Terima kasih telah menjadi bagian dari perjalanan,
-            cerita, tawa, dan kenangan yang tidak akan pernah terlupakan.
+            Terima kasih telah menjadi bagian dari perjalanan, cerita, tawa, dan kenangan indah yang tidak akan pernah terlupakan.
         </p>
+        <a href="#galeri" class="scroll-btn">Lihat Kenangan ↓</a>
     </div>
 </section>
 
-<section class="section">
-    <h2>📸 Galeri Kenangan</h2>
+<!-- Bagian Galeri Foto -->
+<section class="section" id="galeri">
+    <div class="section-title">
+        <h2>📸 Galeri Kenangan</h2>
+    </div>
 
+    <!-- Ekstensi file otomatis menggunakan .jpeg sesuai format foto kamu -->
     <div class="gallery">
-        <img src="image/foto1.jpeg">
-<img src="image/foto2.jpeg">
-<img src="image/foto3.jpeg">
-<img src="image/foto4.jpeg">
-<img src="image/foto5.jpeg">
-<img src="image/foto6.jpeg">
-<img src="image/foto7.jpeg">
-<img src="image/foto8.jpeg">
-<img src="image/foto9.jpeg">
+        <div class="gallery-item"><img src="image/foto1.jpeg" alt="Kenangan 1"></div>
+        <div class="gallery-item"><img src="image/foto2.jpeg" alt="Kenangan 2"></div>
+        <div class="gallery-item"><img src="image/foto3.jpeg" alt="Kenangan 3"></div>
+        <div class="gallery-item"><img src="image/foto4.jpeg" alt="Kenangan 4"></div>
+        <div class="gallery-item"><img src="image/foto5.jpeg" alt="Kenangan 5"></div>
+        <div class="gallery-item"><img src="image/foto6.jpeg" alt="Kenangan 6"></div>
+        <div class="gallery-item"><img src="image/foto7.jpeg" alt="Kenangan 7"></div>
+        <div class="gallery-item"><img src="image/foto8.jpeg" alt="Kenangan 8"></div>
+        <div class="gallery-item"><img src="image/foto9.jpeg" alt="Kenangan 9"></div>
     </div>
 </section>
 
+<!-- Bagian Ucapan -->
 <section class="section">
-    <h2>💌 Wishes</h2>
-
-    <div class="card">
-        <p>
-            Terima kasih untuk semua cerita yang telah kita lalui bersama.
-            Semoga langkah ke depan selalu diberkati dan penuh keberhasilan.
-        </p>
-        <h4>- Kevin Gilbert Ruru</h4>
+    <div class="section-title">
+        <h2>💌 Wishes & Doa</h2>
     </div>
 
-    <div class="card">
-        <p>
-            Perpisahan bukan akhir dari cerita,
-            tetapi awal dari perjalanan yang baru.
-        </p>
-        <h4>- Sahabat</h4>
-    </div>
+    <div class="wishes-container">
+        <div class="card">
+            <p>Terima kasih untuk semua cerita yang telah kita lalui bersama. Semoga langkah ke depan selalu diberkati dan penuh keberhasilan.</p>
+            <h4>- Kevin Gilbert Ruru</h4>
+        </div>
 
-    <div class="card">
-        <p>
-            Sampai bertemu lagi di masa depan dengan versi terbaik dari diri kita masing-masing.
-        </p>
-        <h4>- Teman Seperjuangan</h4>
+        <div class="card">
+            <p>Perpisahan bukan akhir dari cerita, tetapi awal dari petualangan besar yang baru. Sampai jumpa di puncak kesuksesan!</p>
+            <h4>- Sahabat</h4>
+        </div>
+
+        <div class="card">
+            <p>Sampai bertemu lagi di masa depan dengan versi terbaik dari diri kita masing-masing. Terlalu banyak memori indah di kelas ini.</p>
+            <h4>- Teman Seperjuangan</h4>
+        </div>
     </div>
 </section>
 
+<!-- Bagian Bawah -->
 <footer class="footer">
     <h2>❤️ Class of 2026 ❤️</h2>
     <p>Once a family, always a family.</p>
