@@ -274,12 +274,6 @@ body.light-theme .sakura-tree {
     box-shadow: 0 20px 60px rgba(0,0,0,0.6);
     position: relative;
 }
-.video-modal video {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    display: block;
-}
 .close-video-btn {
     position: absolute;
     top: -45px; 
@@ -509,7 +503,6 @@ body.light-theme .sakura-tree {
 
 <body>
 
-<!-- Siluet Vektor Pohon Sakura -->
 <svg class="sakura-tree" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M 50 100 C 48 85, 45 70, 40 55 C 38 50, 30 45, 25 45 C 23 45, 20 48, 18 45 C 22 40, 32 40, 38 48 C 42 55, 46 75, 51 100 Z" fill="#4a282d"/>
     <path d="M 43 65 C 46 58, 55 52, 65 54 C 68 55, 75 50, 80 52 C 72 46, 58 48, 50 55 C 46 59, 44 62, 43 65 Z" fill="#4a282d"/>
@@ -522,10 +515,8 @@ body.light-theme .sakura-tree {
     <circle cx="45" cy="35" r="8" fill="#ffb7c5" opacity="0.8"/>
 </svg>
 
-<!-- Tombol Ganti Tema Dinamis -->
 <button class="theme-toggle-btn" id="theme-toggle-btn" title="Ganti Tema">☀️</button>
 
-<!-- Hero Section -->
 <section class="hero">
     <canvas id="particle-canvas"></canvas>
     <div class="hero-content">
@@ -538,92 +529,77 @@ body.light-theme .sakura-tree {
     </div>
 </section>
 
-<!-- Papan Tempel Pesan Modern (Digital Guestbook) -->
 <section class="section">
     <div class="section-title">
         <div style="font-size: 2.5rem; margin-bottom: 5px;">✍️❤️</div>
         <h2>Pesan & Kesan Keluarga CG</h2>
     </div>
     <div class="memo-wall">
-        <!-- Memo 1 -->
         <div class="memo-card memo-1" style="--r: -3deg;" onclick="openMemo('reva')">
             <span class="memo-sender">From: Reva</span>
             <p class="memo-text">Kak selamat memasuki bab baru, walaupun sedih brutal, tapi aku percaya Tuhan lagi bawa kakak ke tempat yang lebih luas untuk melayani...</p>
         </div>
         
-        <!-- Memo 2 -->
         <div class="memo-card memo-2" style="--r: 2deg;" onclick="openMemo('keren')">
             <span class="memo-sender">From: Keren</span>
             <p class="memo-text">A million stars can fill the sky. A thousand fish can inhabit the sea. But you will always be a part of this family...</p>
         </div>
         
-        <!-- Memo 3 -->
         <div class="memo-card memo-5" style="--r: 1deg;" onclick="openMemo('freya')">
             <span class="memo-sender">From: Freya</span>
             <p class="memo-text">Halowww kak, aku mau say thank youu ya kak karna selalu ingat aku dan ngajak aku untuk cg dan aog hahaha aku ingat banget dulu kakak selalu invite aku buat join...</p>
         </div>
         
-        <!-- Memo 4 -->
         <div class="memo-card memo-3" style="--r: 3deg;" onclick="openMemo('chris')">
             <span class="memo-sender">From: Chris</span>
             <p class="memo-text">Terimakasih ka Anya yang sudah selalu support ak dan selalu juga memuridkan diriku ini yang sangat kepala batu ini dan usil tapi ka Anya tetap mau fight untuk ak bisa maju...</p>
         </div>
         
-        <!-- Memo 5 -->
         <div class="memo-card memo-4" style="--r: -2deg;" onclick="openMemo('kevin')">
             <span class="memo-sender">From: Kevin</span>
             <p class="memo-text">Halo Kak Anya! Terima kasih sudah 2 tahun jadi CGL-ku. Kakak sudah mengubah hidup dan pola pikirku, serta memberi keberanian untuk mencoba hal baru.</p>
         </div>
         
-        <!-- Memo 6 -->
         <div class="memo-card memo-5" style="--r: 2deg;" onclick="openMemo('anyamessage')">
             <span class="memo-sender">From: Ricardo</span>
             <p class="memo-text">Hai Kak Anya, makasih ya buat semua sharingnya di CG. Aku merasa terberkati dengan apa yang Kak Anya ceritain, apalagi soal be aware of redflag, tema Februari kemarin.</p>
         </div>
 
-        <!-- Memo 7 -->
         <div class="memo-card memo-7" style="--r: -1deg;" onclick="openMemo('syifa')">
             <span class="memo-sender">From: Syifa</span>
             <p class="memo-text">Filipi 4:13 — Segala perkara dapat kutanggung di dalam Dia yang memberi kekuatan kepadaku.</p>
         </div>
 
-        <!-- Memo 8 -->
         <div class="memo-card memo-8" style="--r: 1deg;" onclick="openMemo('vincent')">
             <span class="memo-sender">From: Vincent</span>
             <p class="memo-text">Filipi 4:13 — Semangat terus, Kak Anya; Tuhan menyertai rencananya untukmu.</p>
         </div>
 
-        <!-- Memo 9 -->
         <div class="memo-card memo-9" style="--r: 2deg;" onclick="openMemo('michael')">
             <span class="memo-sender">From: Michael</span>
             <p class="memo-text">Happy graduation Kak Anya! Good luck buat next step-nya ya Kak, sukses terus! God bless you.</p>
         </div>
 
-        <!-- Memo 10 -->
         <div class="memo-card memo-10" style="--r: -2deg;" onclick="openMemo('ria')">
             <span class="memo-sender">From: Ria</span>
-            <p class="memo-text">Hallo kak Anya, Ria bersyukur dan very happy bisa ketemu Kak Anya. Terima kasih untuk semua bimbingan di CG dan sharing Kotbahnya. Tuhan terus pakai Kak Anya untuk menjangkau jiwa baru di Pro M.</p>
+            <p class="memo-text">Hallo kak Anya, Ria bersyukur dan very happy bisa ketemu Kak Anya. Terima kasih untuk semua bimbingan di CG and sharing Kotbahnya. Tuhan terus pakai Kak Anya untuk menjangkau jiwa baru di Pro M.</p>
         </div>
 
-        <!-- Memo 11 -->
         <div class="memo-card memo-11" style="--r: 1deg;" onclick="openMemo('meysi')">
             <span class="memo-sender">From: Meysi</span>
             <p class="memo-text">Selamat memasuki part baru Alfa, semoga hal baru yang datang membuat Alfa bertumbuh dan tambah kuat di dalam iman.</p>
         </div>
 
-        <!-- Memo 12 -->
         <div class="memo-card memo-2" style="--r: 2deg;" onclick="openMemo('dave')">
             <span class="memo-sender">From: Dave</span>
             <p class="memo-text">Terima kasih banyak, Kak Anya, atas semua bimbingan, doa, dan waktu yang Kakak berikan di CG.</p>
         </div>
 
-        <!-- Memo 13 -->
         <div class="memo-card memo-6" style="--r: -1deg;" onclick="openMemo('kezia')">
             <span class="memo-sender">From: Kezia</span>
             <p class="memo-text">Mazmur 127:4 — Seperti anak-anak panah di tangan pahlawan, demikianlah anak-anak pada masa muda.</p>
         </div>
 
-        <!-- Memo 14 (Darren) -->
         <div class="memo-card memo-3" style="--r: 3deg;" onclick="openMemo('darren')">
             <span class="memo-sender">From: Darren</span>
             <p class="memo-text">Hi anya, thanks udah melangkah bersama Tuhan untuk menjadi leader di usia AOG, semua benih yang kamu tabur untuk anak anak CG akan semakin berbuah...</p>
@@ -632,7 +608,6 @@ body.light-theme .sakura-tree {
     </div>
 </section>
 
-<!-- Galeri Foto Portrait -->
 <section class="section" id="galeri">
     <div class="section-title">
         <div style="font-size: 2.5rem; margin-bottom: 5px;">📸🌸</div>
@@ -735,7 +710,6 @@ body.light-theme .sakura-tree {
     </div>
 </section>
 
-<!-- MODAL POPUP UNTUK BACA MEMO DETAIL -->
 <div class="memo-modal" id="memo-modal">
     <div class="memo-modal-body" id="memo-modal-body">
         <button class="close-memo-btn" id="close-memo-btn">&times;</button>
@@ -744,17 +718,15 @@ body.light-theme .sakura-tree {
     </div>
 </div>
 
-<!-- VIDEO MODAL -->
 <div class="video-modal" id="video-modal">
     <div class="video-container">
         <button class="close-video-btn" id="close-video-btn">Tutup</button>
         <div class="video-embed">
-            <video id="local-video" class="local-video" controls playsinline></video>
+            <iframe id="local-video" class="local-video" width="100%" height="315" src="https://drive.google.com/file/d/1gHsi6DJTZYwC1PlD7z7PpX2Vq4jXwDse/preview" frameborder="0" allow="autoplay" allowfullscreen style="border-radius: 8px; min-height: 45vh;"></iframe>
         </div>
     </div>
 </div>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
     <button class="lightbox-btn close-btn" id="close-btn">&times;</button>
     <button class="lightbox-btn prev-btn" id="prev-btn">&#10094;</button>
@@ -1130,7 +1102,7 @@ Yosua 1:9
 
 Wah, enggak terasa ya Kak, sudah 2 tahun Kakak jadi CGL-ku. Sebenarnya banyak banget yang ingin aku sampaikan, tapi intinya aku mau bilang Thank you sebesar-besarnya. Kakak sudah banyak mengubah hidup dan pola pikirku.
 
-Terima kasih karena Kakak selalu menasihati aku untuk mau memaafkan orang-orang di sekitarku, dan selalu mengingatkan aku untuk mengandalkan Roh Kudus, bukan cuma kekuatan diri sendiri. Kakak juga yang memberi aku keberanian untuk mencoba hal-hal baru, seperti belajar main gitar dan berani ngobrol sama orang baru.
+Terima kasih karena Kakak selalu menasihati aku untuk mau memaafkan orang-orang di sekitarku, dan selalu reminding aku untuk mengandalkan Roh Kudus, bukan cuma kekuatan diri sendiri. Kakak juga yang memberi aku keberanian untuk mencoba hal-hal baru, seperti belajar main gitar dan berani ngobrol sama orang baru.
 
 Aku benar-benar merasa sangat bertumbuh di CG ini karena Tuhan bekerja lewat Kakak. Terima kasih ya Kak Anya, sudah tetap sabar menghadapi sifatku yang keras kepala. Maaf ya Kak kalau selama ini aku sering merepotkan, tapi Kakak enggak pernah bosan atau capek untuk bantu memperbaiki area-area lemahku. Thank you so much, Kak. Dan sekarang Kak, berkat bimbingan Kakak, aku jadi lebih berani untuk mau lebih jauh terbang dan siap untuk apa aja wkwk.
 
@@ -1184,24 +1156,26 @@ nextBtn.addEventListener('click', () => showImage(currentIndex + 1));
 prevBtn.addEventListener('click', () => showImage(currentIndex - 1));
 lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.classList.remove('active'); });
 
-// 5. VIDEO MODAL
+// 5. VIDEO MODAL (GOOGLE DRIVE DRIVER ENGINE)
 const openVideoBtn = document.getElementById('open-video-btn');
 const videoModal = document.getElementById('video-modal');
 const closeVideoBtn = document.getElementById('close-video-btn');
-const localVideo = document.getElementById('local-video');
-const localVideoSource = 'video/video.mp4';
+const iframeVideo = document.getElementById('local-video');
+const gdSrc = iframeVideo.src; 
 
 function showVideoModal() {
-    if (localVideo) {
-        localVideo.src = localVideoSource;
-        localVideo.load();
-        videoModal.classList.add('active');
-        setTimeout(() => { localVideo.play().catch(() => {}); }, 150);
-    }
+    videoModal.classList.add('active');
+    iframeVideo.src = gdSrc; 
 }
+
+function closeVideo() {
+    videoModal.classList.remove('active');
+    iframeVideo.src = ""; // Mematikan video dan suaranya secara paksa saat modal ditutup
+}
+
 openVideoBtn.addEventListener('click', showVideoModal);
-closeVideoBtn.addEventListener('click', () => { videoModal.classList.remove('active'); localVideo.pause(); });
-videoModal.addEventListener('click', (e) => { if (e.target === videoModal) { videoModal.classList.remove('active'); localVideo.pause(); } });
+closeVideoBtn.addEventListener('click', closeVideo);
+videoModal.addEventListener('click', (e) => { if (e.target === videoModal) closeVideo(); });
 </script>
 
 </body>
