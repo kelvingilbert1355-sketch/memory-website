@@ -294,14 +294,31 @@ body.light-theme .sakura-tree {
     height: auto;
     max-height: 60vh;
     border-radius: 8px;
-    display: block; 
-    background: black;
-}
-
-/* --- DIGITAL GUESTBOOK / MEMO WALL --- */
-.memo-wall {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        display: block;
+        background: black;
+    }
+    .video-playlist {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+    .video-item {
+        border: 1px solid rgba(255,255,255,0.18);
+        background: rgba(255,255,255,0.08);
+        color: white;
+        padding: 10px 12px;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+        text-align: center;
+    }
+    .video-item:hover,
+    .video-item.active {
+        transform: translateY(-2px);
+        background: rgba(255,255,255,0.16);
+        border-color: rgba(255,255,255,0.34);
     gap: 30px;
     padding: 20px 0;
 }
@@ -707,6 +724,9 @@ body.light-theme .sakura-tree {
         <div class="gallery-item"><img src="image/foto (89).jpg" alt="Kenangan foto (89)"></div>
         <div class="gallery-item"><img src="image/foto (9).jpg" alt="Kenangan foto (9)"></div>
         <div class="gallery-item"><img src="image/foto (90).jpeg" alt="Kenangan foto (90)"></div>
+        <div class="gallery-item"><img src="image/foto (91).JPG" alt="Kenangan foto (91)"></div>
+        <div class="gallery-item"><img src="image/foto (92).JPG" alt="Kenangan foto (92)"></div>
+        <div class="gallery-item"><img src="image/foto (93).JPG" alt="Kenangan foto (93)"></div>
     </div>
 </section>
 
@@ -722,7 +742,18 @@ body.light-theme .sakura-tree {
     <div class="video-container">
         <button class="close-video-btn" id="close-video-btn">Tutup</button>
         <div class="video-embed">
-            <iframe id="local-video" class="local-video" width="100%" height="315" src="https://drive.google.com/file/d/1gHsi6DJTZYwC1PlD7z7PpX2Vq4jXwDse/preview" frameborder="0" allow="autoplay" allowfullscreen style="border-radius: 8px; min-height: 45vh;"></iframe>
+            <div class="video-playlist" id="video-playlist">
+                <button class="video-item active" data-src="https://drive.google.com/file/d/1gHsi6DJTZYwC1PlD7z7PpX2Vq4jXwDse/preview">Video 1</button>
+                <button class="video-item" data-src="https://drive.google.com/file/d/1A8LDXTXifKVEnEIrWw6NMn4fsz6f2fc_/preview">Video 2</button>
+                <button class="video-item" data-src="https://drive.google.com/file/d/1kAWXVO656Nzz6cIsBVPp5Xsd7tnHuYEy/preview">Video 3</button>
+                <button class="video-item" data-src="https://drive.google.com/file/d/16dzHPZKXrF0u0V40uaK0bkiIvwCrmORA/preview">Video 4</button>
+                <button class="video-item" data-src="https://drive.google.com/file/d/1Y-aAuCxfANZ-NUgU4BpQohbngvssbAfa/preview">Video 5</button>
+                <button class="video-item" data-src="https://drive.google.com/file/d/1FX6FaLbZBhsVr2ybUtW8CmZigaIwD1dZ/preview">Video 6</button>
+                <button class="video-item" data-src="https://drive.google.com/file/d/1t7mqoIzuBfawLAg1EXvTr-fkmLUX2JiN/preview">Video 7</button>
+                <button class="video-item" data-src="https://drive.google.com/file/d/1_omzB2py2fH3VKx_-p0NFGCvFlEIY9ee/preview">Video 8</button>
+                <button class="video-item" data-src="https://drive.google.com/file/d/16dzHPZKXrF0u0V40uaK0bkiIvwCrmORA/preview">Video 9</button>
+            </div>
+            <iframe id="local-video" class="local-video" src="https://drive.google.com/file/d/1gHsi6DJTZYwC1PlD7z7PpX2Vq4jXwDse/preview" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="border-radius: 8px; min-height: 45vh;"></iframe>
         </div>
     </div>
 </div>
@@ -1160,18 +1191,29 @@ lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.
 const openVideoBtn = document.getElementById('open-video-btn');
 const videoModal = document.getElementById('video-modal');
 const closeVideoBtn = document.getElementById('close-video-btn');
-const iframeVideo = document.getElementById('local-video');
-const gdSrc = iframeVideo.src; 
+const videoIframe = document.getElementById('local-video');
+const videoPlaylist = document.getElementById('video-playlist');
 
 function showVideoModal() {
     videoModal.classList.add('active');
-    iframeVideo.src = gdSrc; 
 }
 
 function closeVideo() {
     videoModal.classList.remove('active');
-    iframeVideo.src = ""; // Mematikan video dan suaranya secara paksa saat modal ditutup
+    videoIframe.src = '';
+    setTimeout(() => {
+        videoIframe.src = document.querySelector('.video-item.active').dataset.src;
+    }, 10);
 }
+
+videoPlaylist.addEventListener('click', (event) => {
+    const button = event.target.closest('.video-item');
+    if (!button) return;
+
+    document.querySelectorAll('.video-item').forEach(item => item.classList.remove('active'));
+    button.classList.add('active');
+    videoIframe.src = button.dataset.src;
+});
 
 openVideoBtn.addEventListener('click', showVideoModal);
 closeVideoBtn.addEventListener('click', closeVideo);
