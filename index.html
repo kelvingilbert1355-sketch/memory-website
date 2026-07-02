@@ -294,36 +294,206 @@ body.light-theme .sakura-tree {
     height: auto;
     max-height: 60vh;
     border-radius: 8px;
-        display: block;
-        background: black;
-    }
-    .video-playlist {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 12px;
-        margin-bottom: 18px;
-    }
-    .video-item {
-        border: 1px solid rgba(255,255,255,0.18);
-        background: rgba(255,255,255,0.08);
-        color: white;
-        padding: 10px 12px;
-        border-radius: 12px;
-        cursor: pointer;
-        font-weight: 600;
-        transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-        text-align: center;
-    }
-    .video-item:hover,
-    .video-item.active {
-        transform: translateY(-2px);
-        background: rgba(255,255,255,0.16);
-        border-color: rgba(255,255,255,0.34);
-    gap: 30px;
-    padding: 20px 0;
+    display: block;
+    background: black;
+}
+.video-playlist {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+}
+.video-item {
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.08);
+    color: white;
+    padding: 10px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    text-align: center;
+}
+.video-item:hover,
+.video-item.active {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.16);
+    border-color: rgba(255,255,255,0.34);
 }
 
-.memo-card {
+.join-group-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 11, 18, 0.92);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10100;
+    padding: 20px;
+}
+.join-group-card {
+    width: min(520px, 100%);
+    background: rgba(8, 12, 22, 0.98);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+}
+.join-group-card h2 {
+    color: #fff;
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+.join-group-card p {
+    color: #cbd5e1;
+    margin-bottom: 22px;
+    line-height: 1.7;
+}
+.join-group-card input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.06);
+    color: white;
+    margin-bottom: 16px;
+    font-size: 1rem;
+}
+.join-group-card button {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+.chat-open-btn {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #7c3aed, #fb7185);
+    color: white;
+    font-size: 1.8rem;
+    box-shadow: 0 18px 40px rgba(124, 58, 237, 0.35);
+    cursor: pointer;
+    z-index: 10120;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.chat-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 11, 18, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10110;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    padding: 20px;
+}
+.chat-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.chat-modal-body {
+    width: min(620px, 100%);
+    max-height: 80vh;
+    background: rgba(7, 12, 24, 0.98);
+    border-radius: 24px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+}
+.chat-modal-body h3 {
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 1.75rem;
+}
+.chat-status {
+    color: #cbd5e1;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+}
+.message-list {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    margin-bottom: 16px;
+}
+.message-item {
+    max-width: 80%;
+    padding: 12px 14px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.08);
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+.message-item.mine {
+    align-self: flex-end;
+    background: rgba(124, 58, 237, 0.95);
+}
+.message-item small {
+    display: block;
+    color: #cbd5e1;
+    margin-bottom: 6px;
+    font-size: 0.8rem;
+}
+.chat-input-group {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+}
+.chat-input-group input {
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.06);
+    color: white;
+    width: 100%;
+}
+.chat-input-group button {
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    color: white;
+    padding: 14px 18px;
+    cursor: pointer;
+    font-weight: 700;
+}
+.close-chat-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.memo-wall {
     padding: 25px;
     border-radius: 16px;
     box-shadow: 5px 10px 20px rgba(0,0,0,0.15);
@@ -754,6 +924,29 @@ body.light-theme .sakura-tree {
                 <button class="video-item" data-src="https://drive.google.com/file/d/16dzHPZKXrF0u0V40uaK0bkiIvwCrmORA/preview">Video 9</button>
             </div>
             <iframe id="local-video" class="local-video" src="https://drive.google.com/file/d/1gHsi6DJTZYwC1PlD7z7PpX2Vq4jXwDse/preview" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="border-radius: 8px; min-height: 45vh;"></iframe>
+        </div>
+    </div>
+</div>
+
+<div class="join-group-overlay" id="join-group-overlay">
+    <div class="join-group-card">
+        <h2>Ingin berinteraksi di dalam grup?</h2>
+        <p>Masukkan nama kamu untuk masuk ke ruang chat bersama teman yang juga punya link ini. Tidak perlu masuk dengan Gmail.</p>
+        <input id="username-input" type="text" placeholder="Nama pengguna" />
+        <button id="join-group-btn">Gabung Grup</button>
+    </div>
+</div>
+
+<button class="chat-open-btn" id="chat-open-btn" title="Buka obrolan grup">💬</button>
+<div class="chat-modal" id="chat-modal">
+    <div class="chat-modal-body">
+        <button class="close-chat-btn" id="close-chat-btn">×</button>
+        <h3>Ruang Interaksi</h3>
+        <div class="chat-status">Masuk sebagai <strong id="chat-username">Guest</strong></div>
+        <div class="message-list" id="message-list"></div>
+        <div class="chat-input-group">
+            <input id="chat-input" type="text" placeholder="Tulis pesan..." autocomplete="off" />
+            <button id="send-chat-btn">Kirim</button>
         </div>
     </div>
 </div>
@@ -1200,16 +1393,11 @@ function showVideoModal() {
 
 function closeVideo() {
     videoModal.classList.remove('active');
-    videoIframe.src = '';
-    setTimeout(() => {
-        videoIframe.src = document.querySelector('.video-item.active').dataset.src;
-    }, 10);
 }
 
 videoPlaylist.addEventListener('click', (event) => {
     const button = event.target.closest('.video-item');
     if (!button) return;
-
     document.querySelectorAll('.video-item').forEach(item => item.classList.remove('active'));
     button.classList.add('active');
     videoIframe.src = button.dataset.src;
@@ -1218,6 +1406,120 @@ videoPlaylist.addEventListener('click', (event) => {
 openVideoBtn.addEventListener('click', showVideoModal);
 closeVideoBtn.addEventListener('click', closeVideo);
 videoModal.addEventListener('click', (e) => { if (e.target === videoModal) closeVideo(); });
+
+// 6. CHAT GROUP INTERAKTIF
+const joinOverlay = document.getElementById('join-group-overlay');
+const usernameInput = document.getElementById('username-input');
+const joinGroupBtn = document.getElementById('join-group-btn');
+const chatOpenBtn = document.getElementById('chat-open-btn');
+const chatModal = document.getElementById('chat-modal');
+const closeChatBtn = document.getElementById('close-chat-btn');
+const chatUsernameLabel = document.getElementById('chat-username');
+const messageList = document.getElementById('message-list');
+const chatInput = document.getElementById('chat-input');
+const sendChatBtn = document.getElementById('send-chat-btn');
+
+let chatUsername = localStorage.getItem('chatUsername') || '';
+let chatMessages = JSON.parse(localStorage.getItem('chatMessages') || '[]');
+
+const firebaseConfig = {
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: ""
+};
+let firebaseEnabled = false;
+let firebaseMessagesRef = null;
+
+function renderChatMessages() {
+    messageList.innerHTML = chatMessages.map(msg => {
+        return `
+            <div class="message-item ${msg.user === chatUsername ? 'mine' : ''}">
+                <small>${msg.user}</small>
+                <div>${msg.text}</div>
+            </div>
+        `;
+    }).join('');
+    messageList.scrollTop = messageList.scrollHeight;
+}
+
+function saveLocalChat() {
+    localStorage.setItem('chatMessages', JSON.stringify(chatMessages));
+}
+
+function joinGroup() {
+    const name = usernameInput.value.trim();
+    if (!name) return;
+    chatUsername = name;
+    localStorage.setItem('chatUsername', chatUsername);
+    chatUsernameLabel.textContent = chatUsername;
+    joinOverlay.style.display = 'none';
+    chatOpenBtn.style.display = 'flex';
+    renderChatMessages();
+    if (firebaseConfig.apiKey) {
+        initializeFirebaseChat();
+    }
+}
+
+function openChat() {
+    chatModal.classList.add('active');
+}
+
+function closeChat() {
+    chatModal.classList.remove('active');
+}
+
+function sendMessage() {
+    const message = chatInput.value.trim();
+    if (!message) return;
+    const chatMessage = {
+        user: chatUsername,
+        text: message,
+        timestamp: Date.now()
+    };
+    if (firebaseEnabled && firebaseMessagesRef) {
+        firebaseMessagesRef.push(chatMessage);
+    } else {
+        chatMessages.push(chatMessage);
+        saveLocalChat();
+        renderChatMessages();
+    }
+    chatInput.value = '';
+}
+
+function initializeFirebaseChat() {
+    if (firebaseEnabled) return;
+    if (!window.firebase || !firebaseConfig.apiKey) return;
+
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+    firebaseMessagesRef = database.ref('groupChat/messages');
+    firebaseEnabled = true;
+
+    firebaseMessagesRef.limitToLast(100).on('child_added', snapshot => {
+        const msg = snapshot.val();
+        if (!msg) return;
+        chatMessages.push(msg);
+        renderChatMessages();
+    });
+}
+
+joinGroupBtn.addEventListener('click', joinGroup);
+usernameInput.addEventListener('keydown', (event) => { if (event.key === 'Enter') joinGroup(); });
+chatOpenBtn.addEventListener('click', openChat);
+closeChatBtn.addEventListener('click', closeChat);
+sendChatBtn.addEventListener('click', sendMessage);
+chatInput.addEventListener('keydown', (event) => { if (event.key === 'Enter') sendMessage(); });
+
+if (chatUsername) {
+    usernameInput.value = chatUsername;
+    chatUsernameLabel.textContent = chatUsername;
+    joinGroup();
+}
+
 </script>
 
 </body>
